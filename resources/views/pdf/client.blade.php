@@ -25,14 +25,14 @@
 </head>
 <body>
     <p style="text-align: center; margin-bottom: 18pt">
-        <img src="{{public_path('images/mBankLogo.jpg')}}" style="width: 200px;" alt=""> <br>
+        <img src="{{public_path('images/mBankLogo.jpg')}}" style="width: 200px;" alt="M Bank Logo"> <br>
         758 Brightwood Avenue, Serenewood <br>
         Dumaguete City, Negros Oriental <br>
         Tel. No.: 123-456-7890, 987-654-3210
     </p>
 
     <h1>Client Summary</h1>
-    <table style='width: 5in'>
+    <table style='width: 4in'>
         <tr>
             <th>Name</th>
             <td>{{$client->first_name}} {{$client->middle_name}} {{$client->last_name}}</td>
@@ -49,7 +49,9 @@
 
     <hr>
 
-    <table style="width: 100%">
+    <h3>Transaction History</h3>
+
+    <table style="width: 70%">
         <thead>
             <tr style="background-color: #efefef">
                 <th>Date</th>
