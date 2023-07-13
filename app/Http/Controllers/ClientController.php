@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ClientController extends Controller
 {
@@ -67,5 +68,22 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         //
+    }
+
+    public function email(Client $client) {
+        $pdf = Pdf::loadView('pdf.client', [
+            'client' => $client
+        ]);
+
+        $fileName = 'statements/' . $client->last_name . "_" . $client->id . ".pdf";
+        $pdf->save($fileName);
+
+        Mail::send('email.soa', ['client' => $client], function($message) use ($client, $fileName) {
+            $message->subject('Statement of Account');
+            $message->to($client->email);
+            $message->attach($fileName);
+        });
+
+        return back();
     }
 }

@@ -36,8 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/clients/pdf/{client}',[PdfController::class,'pdf']);
+    Route::get('/clients/pdf/{client}', [PdfController::class,'pdf'])->name('client.pdf');
     Route::resource('clients', ClientController::class);
+    Route::get('/clients/email/{client}', [ClientController::class, 'email'])->name('client.email');
 });
 
 require __DIR__.'/auth.php';
