@@ -35,6 +35,9 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink href="/clients" :active="$page.url.startsWith('/clients')">
                                     Clients
                                 </NavLink>
+                                <NavLink href="/admin" :active="$page.url.startsWith('/admin')">
+                                    Admin
+                                </NavLink>
                             </div>
                         </div>
 
